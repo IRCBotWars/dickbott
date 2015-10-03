@@ -50,12 +50,11 @@ EOF
 #=================================================
 
 sub do_work {
-    my ( $help, $sock );
+    my ( $help, $pass );
     my $server   = "irc.haxzor.ninja";
     my $nick     = "dickbott";
     my $login    = "dickbott";
     my $channel  = "#viper";
-    my $pass     = "derpyderp";
 
     GetOptions(
         "help",       => \$help,
