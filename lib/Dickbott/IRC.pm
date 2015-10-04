@@ -108,13 +108,13 @@ sub connect {
 
     # read server reply until done
     my $input;
-    while ( $self->{_sock}->recv($input, 1024) )
+    while ( my $input = readline($self->{_sock}) )
     {
         print $input;
         if ( $input =~ /004/ ) {
             last;
         } elsif ( $input =~ /^PING(.*)$/i ) {
-            print $self->{_sock}, "PONG $1\r\n";
+            $self->{_sock}->send("PONG $1\r\n");
         } elsif ( $input =~ /433/ ) {
             print "! nickname is already in use";
             exit 1;
@@ -136,8 +136,7 @@ sub cmd_loop {
     my $self = shift;
     
     my ( $prefix, $input );
-    while ( 1 ) {
-        $self->{_sock}->recv($input, 1024);
+    while ( my $input = readline($self->{_sock}) ) {
         print $input;
         chop $input;
         if ( $input =~ /^PING(.*)$/i ) {
@@ -152,7 +151,7 @@ sub cmd_loop {
 
             sleep(3);
             if ( $input =~ /$self->{_channel}/i ) {
-                derp_hangman($self->{_sock}, $prefix);
+                $self->derp_hangman($prefix);
             }
 
         } elsif ( $input =~ /(\S+hman) guess/i ) {
@@ -162,10 +161,10 @@ sub cmd_loop {
                 next;
             }
 
-            derp_hangman($self->{_sock}, $prefix);
+            $self->derp_hangman($prefix);
 
         } elsif ( $input =~ /Sphinx/i ) {
-            threaten_marty($self->{_sock});
+            $self->threaten_marty();
         }
     }
 } # function cmd_loop
