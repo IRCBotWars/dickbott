@@ -7,7 +7,7 @@
 #
 #  DESCRIPTION: IRC bot derper
 #
-#       AUTHOR: Brandon Miller (r2dbg), r2dbg@hushmail.com
+#       AUTHOR: Brandon K. Miller, brandonkentmiller@gmail.com
 #===============================================================================
 
 use strict;

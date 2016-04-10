@@ -8,7 +8,7 @@
 #        FILES: ---
 #         BUGS: ---
 #        NOTES: ---
-#       AUTHOR: Brandon Miller (r2dbg), r2dbg@hushmail.com
+#       AUTHOR: Brandon K. Miller, brandonkentmiller@gmail.com
 # ORGANIZATION: ---
 #      VERSION: 1.0
 #      CREATED: 10/04/2015 12:42:47 AM
